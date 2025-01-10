@@ -8,16 +8,12 @@ export default function ContactForm() {
   const [companyName, setCompanyName] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [message, setMessage] = useState<string>("");
-  const [isUserNameValid, setIsUserNameValid] =
-    useState<boolean>(true);
-  const [isEmailAddressValid, setIsEmailAddressValid] =
-    useState<boolean>(true);
-  const [isCompanyNameValid, setIsCompanyNameValid] =
-    useState<boolean>(true);
+  const [isUserNameValid, setIsUserNameValid] = useState<boolean>(true);
+  const [isEmailAddressValid, setIsEmailAddressValid] = useState<boolean>(true);
+  const [isCompanyNameValid, setIsCompanyNameValid] = useState<boolean>(true);
   const [isTitleValid, setIsTitleValid] = useState<boolean>(true);
   const [isMessageValid, setIsMessageValid] = useState<boolean>(true);
-  const [isConfirmed, setIsConfirmed] = useState<boolean>(false);
-  const [open, setOpen] = useState<boolean>(false); 
+  const [open, setOpen] = useState<boolean>(false); // Control dialog visibility
 
   function validateEmail(email: string) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -26,8 +22,7 @@ export default function ContactForm() {
 
   const handleSubmit = () => {
     const userNameValid = userName.trim() !== "";
-    const emailAddressValid =
-      emailAddress.trim() !== "" && validateEmail(emailAddress);
+    const emailAddressValid = emailAddress.trim() !== "" && validateEmail(emailAddress);
     const companyNameValid = companyName.trim() !== "";
     const titleValid = title.trim() !== "";
     const messageValid = message.trim() !== "";
@@ -38,20 +33,13 @@ export default function ContactForm() {
     setIsTitleValid(titleValid);
     setIsMessageValid(messageValid);
 
-    if (
-      userNameValid &&
-      emailAddressValid &&
-      companyNameValid &&
-      titleValid &&
-      messageValid
-    ) {
-      setIsConfirmed(true);
-      setOpen(true);
+    if (userNameValid && emailAddressValid && companyNameValid && titleValid && messageValid) {
+      setOpen(true); // Show confirmation dialog
     }
   };
 
   const handleDialogClose = () => {
-    setOpen(false);
+    setOpen(false); // Close confirmation dialog
   };
 
   return (
@@ -127,14 +115,9 @@ export default function ContactForm() {
           <div className="flex gap-[2.6rem] mt-[2.4rem] items-center">
             <Checkbox
               color="pink"
-              className="w-[2.4rem] h-[2.4rem] rounded-none border-none bg-[#92A3B1]"
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
-              crossOrigin={undefined}
-            />
+              className="w-[2.4rem] h-[2.4rem] rounded-none border-none bg-[#92A3B1]" onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} crossOrigin={undefined}            />
             <p className="text-[#36536B] text-[1.5rem]">
-              Stay up-to-date with company announcements and updates
-              to our API
+              Stay up-to-date with company announcements and updates to our API
             </p>
           </div>
           <button
